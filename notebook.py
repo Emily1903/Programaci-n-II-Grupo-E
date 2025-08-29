@@ -10,7 +10,7 @@ ventana_principal.geometry("400x600")
 pestañas=ttk.Notebook(ventana_principal)
 #Crear frames(uno por pestaña)
 frame_pacientes=ttk.Frame(pestañas)
-#Agregar pestañas al Notebook
+#Agregar pestañas al Notebook(para organizar el contenido)
 pestañas.add(frame_pacientes,text="Pacientes")
 
 #Mostrar las pestañas en la ventana
