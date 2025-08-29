@@ -23,5 +23,5 @@ labelGenero.grid(row=2,column=0,padx=5,pady=5,sticky="w")
 genero=tk.Spinbox(ventana,values=("Mascuino","Femenino","Otro"))
 genero.grid(row=2,column=1,padx=10,pady=10)
 botonGenero=tk.Button(ventana,text="Obtener género",command=mostrarGenero)
-
+botonGenero.grid(row=3,column=0,padx=10,pady=10)
 ventana.mainloop()
