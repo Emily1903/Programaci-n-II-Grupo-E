@@ -71,4 +71,19 @@ frame_doctores=ttk.Frame(pestañas)
 pestañas.add(frame_doctores,text="Doctores")
 pestañas.pack(expand=True,fill="both")
 
+#Nombre
+labelNombre=tk.Label(frame_doctores,text="Nombre Completo: ")
+labelNombre.grid(row=0,column=0,sticky="w",padx=5,pady=5)
+nombreP=tk.Entry(frame_doctores)
+nombreP.grid(row=0,column=1,sticky="w",padx=5,pady=5)
+
+#Género
+labelGenero=tk.Label(frame_doctores,text="Género: ")
+labelGenero.grid(row=3,column=0,sticky="w",padx=5,pady=5)
+genero=tk.StringVar()
+genero.set("Masculino") #Valor por defecto
+radioMasculino=ttk.Radiobutton(frame_doctores,text="Masculino",variable=genero,value="Masculino")
+radioMasculino.grid(row=3,column=1,sticky="w",padx=5)
+radioFemenino=ttk.Radiobutton(frame_doctores,text="Femenino",variable=genero,value="Femenino")
+radioFemenino.grid(row=4,column=1,sticky="w",padx=5)
 ventana_principal.mainloop()
