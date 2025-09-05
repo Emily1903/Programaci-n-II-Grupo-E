@@ -44,7 +44,8 @@ def registrarPaciente():
         "Centro Médico":centro_medico.get()
     }
     #Agregar paciente a la lista
-    paciente.append(paciente)
+    paciente_data.append(paciente)
+    cargar_treeview()
     #Cargar Treeview
 def cargar_treeview():
     #Limpiar el Treeview
@@ -62,6 +63,36 @@ def cargar_treeview():
                 item["Grupo Sanguíneo"],
                 item["Tipo de Seguro"],
                 item["Centro Médico"]
+            )
+        )
+        
+#LISTA DE DPCTORES (INICIALMENTE VACIA)
+doctores_data=[]
+#FUNCION PARA REGITRAR PACIENTE
+def registrar_doctor():
+    Doctores={  #Crear un diccionario con los datos registrados
+        "Nombre": nombreD.get(),
+        "Especialidad": especialidad.get(),
+        "Edad": spin.get(),
+        "Telefono": telefonoD.get(),
+    }
+    #AGREGAR DOCTOR A LA LISTA
+    doctores_data.append(Doctores)
+    Cargar_treeview()
+#CARGAR EL TREEVIEW
+def Cargar_treeview():
+    #limpiar el treeview
+    for doctor in treeview2.get_children():
+        treeview2.delete(doctor)
+    #Insertar cada paciente
+    for a, item in enumerate(doctores_data):
+        treeview2.insert(
+            "", "end", iid=str(a),
+            values=(
+                item["Nombre"],
+                item["Especialidad"],
+                item["Edad"],
+                item["Telefono"],
             )
         )
 #Crear una ventana principal
@@ -187,8 +218,8 @@ labelRegistro.grid(row=0,column=0,sticky="w",padx=5,pady=5)
 #Nombre
 labelNombre=tk.Label(frame_doctores,text="Nombre Completo: ")
 labelNombre.grid(row=1,column=0,sticky="w",padx=5,pady=5)
-nombreP=tk.Entry(frame_doctores)
-nombreP.grid(row=1,column=1,sticky="w",padx=5,pady=5)
+nombreD=tk.Entry(frame_doctores)
+nombreD.grid(row=1,column=1,sticky="w",padx=5,pady=5)
 
 #Especialidad
 labelEspecialidad=tk.Label(frame_doctores,text="Especialidad: ")
@@ -217,7 +248,7 @@ btn_frame=tk.Frame(frame_doctores)
 btn_frame.grid(row=5,column=0,columnspan=2,pady=5,sticky="w")
 
 #Botón Registrar
-btn_registrar=tk.Button(btn_frame,text="Registrar",command="")
+btn_registrar=tk.Button(btn_frame,text="Registrar",command=registrar_doctor)
 btn_registrar.grid(row=1,column=0,padx=5)
 btn_registrar.configure(bg="LightGreen")
 
@@ -226,19 +257,19 @@ btn_eliminar=tk.Button(btn_frame,text="Eliminar",command="")
 btn_eliminar.grid(row=1,column=1,padx=5)
 btn_eliminar.configure(bg="OrangeRed")
 
-treeview=ttk.Treeview(frame_doctores,columns=("Nombre","Especialidad","Edad","Teléfono"),show="headings")
+treeview2=ttk.Treeview(frame_doctores,columns=("Nombre","Especialidad","Edad","Teléfono"),show="headings")
 #Definir encabezados
-treeview.heading("Nombre",text="Nombre Completo")
-treeview.heading("Especialidad",text="Especialidad")
-treeview.heading("Edad",text="Edad")
-treeview.heading("Teléfono",text="Teléfono")
+treeview2.heading("Nombre",text="Nombre Completo")
+treeview2.heading("Especialidad",text="Especialidad")
+treeview2.heading("Edad",text="Edad")
+treeview2.heading("Teléfono",text="Teléfono")
 #Definir ancho de columnas
-treeview.column("Nombre",width=120)
-treeview.column("Especialidad",width=120)
-treeview.column("Edad",width=60,anchor="center")
-treeview.column("Teléfono",width=120,anchor="center")
+treeview2.column("Nombre",width=120)
+treeview2.column("Especialidad",width=120)
+treeview2.column("Edad",width=60,anchor="center")
+treeview2.column("Teléfono",width=120,anchor="center")
 #Indicar el TreeView en la cuadrícula
-treeview.grid(row=7,column=0,columnspan=2,sticky="nsew",padx=5,pady=10)
+treeview2.grid(row=7,column=0,columnspan=2,sticky="nsew",padx=5,pady=10)
 
 
 ventana_principal.mainloop()
