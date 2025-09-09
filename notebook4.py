@@ -30,9 +30,9 @@ def enmascarar_fecha(texto): #texto=recibe la fecha
 
 #Guardar archivo de texto
 def guardar_en_archivo():
-    with open("paciente.txt","w",encoding="utf-8") as archivo:
+    with open("paciente.txt","w",encoding="utf-8") as archivo2:
         for paciente in paciente_data:
-            archivo.write(
+            archivo2.write(
             f"{paciente['Nombre']}|"
             f"{paciente['Fecha de Nacimiento']}|"
             f"{paciente['Edad']}|"
@@ -51,6 +51,7 @@ def cargar_desde_archivo_pacientes():
                         "Fecha de Nacimiento":datos[1],
                         "Edad":datos[2],
                         "Género":datos[3],
+                        "Tipo de Seguro":datos[3],
                         "Grupo Sanguíneo":datos[5],
                         "Centro Médico":datos[6]
                     }
@@ -97,7 +98,35 @@ def cargar_treeview():
                 item["Centro Médico"]
             )
         )
+#DOCTORES PARA CARGAR A UN ARCHIVO
+def guardar_en_archivo_doctores():
+    with open("doctor.txt","w",encoding="utf-8") as archivo:
+        for doctor in doctores_data:
+            archivo.write(
+            f"{doctor['Nombre']}|"
+            f"{doctor['Especialidad']}|"
+            f"{doctor['Edad']}|"
+            f"{doctor['Teléfono']}\n")
+            
+def cargar_desde_archivo_doctores():
+    try:
+        with open("doctor.txt", "r", encoding="utf-8") as archivo1:
+            doctores_data.clear()
+            for linea in archivo1:
+                datos_doctor = linea.strip().split("|")
+                if len(datos_doctor) == 4:
+                    doctor = {
+                        "Nombre": datos_doctor[0],
+                        "Especialidad": datos_doctor[1],
+                        "Edad": datos_doctor[2],
+                        "Telefono": datos_doctor[3],
+                    }
+                    doctores_data.append(doctor)
+        Cargar_treeview()
+    except FileNotFoundError:
+        open("doctor.txt", "w", encoding="utf-8").close()
         
+
 #LISTA DE DPCTORES (INICIALMENTE VACIA)
 doctores_data=[]
 #FUNCION PARA REGITRAR PACIENTE
@@ -106,10 +135,11 @@ def registrar_doctor():
         "Nombre": nombreD.get(),
         "Especialidad": especialidad.get(),
         "Edad": spin.get(),
-        "Telefono": telefonoD.get(),
+        "Teléfono": telefonoD.get(),
     }
     #AGREGAR DOCTOR A LA LISTA
     doctores_data.append(Doctores)
+    guardar_en_archivo_doctores()
     Cargar_treeview()
 #CARGAR EL TREEVIEW
 def Cargar_treeview():
@@ -124,7 +154,7 @@ def Cargar_treeview():
                 item["Nombre"],
                 item["Especialidad"],
                 item["Edad"],
-                item["Telefono"],
+                item["Teléfono"],
             )
         )
 #Crear una ventana principal
