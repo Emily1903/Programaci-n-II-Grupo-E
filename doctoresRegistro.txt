@@ -1,0 +1,9 @@
+Juan Pablo Hayes|Pediatria|40|Masculino|Hospital Central
+Maria Parada|Pediatria|20|Femenino|Hospital Norte
+Jose Aguilar|Neurología|10|Masculino|Hospital Central
+Sebastian Cuellar|Neurología|5|Masculino|Hospital Norte
+Maria Jose Roca|Cardiología|5|Femenino|Clínica Vida
+Fabricio Montaño|Cardiología|15|Masculino|Clinica Santa María
+Fabian Coronado|Traumatología|10|Masculino|Hospital Norte
+Simon Castillo|Cardiología|7|Masculino|Hospital Central
+Mariela Escobar|Pediatria|7|Femenino|Hospital Norte
